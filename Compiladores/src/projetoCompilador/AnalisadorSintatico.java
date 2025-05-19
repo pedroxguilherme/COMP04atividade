@@ -79,6 +79,11 @@ public class AnalisadorSintatico {
         expressao();
         esperar(";");
     }
+    private void atribuicaoInline() {
+        esperar("ID");
+        esperar("ATR");
+        expressao();
+    }
 
     private void comandoLeitura() {
         esperar("LEIA");
@@ -116,7 +121,7 @@ public class AnalisadorSintatico {
 
     private void comandoPara() {
         esperar("PARA");
-        atribuicao();
+        atribuicaoInline();
         esperar("ATE");
         esperar("NUMINT");
         if (aceitar("PASSO")) {
