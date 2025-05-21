@@ -61,7 +61,7 @@ public class AnalisadorLexico {
             case "(": return "PARAB";
             case ")": return "PARFE";
             case ":": return ":";
-            case ";": return ";";
+            case ";":  throw new RuntimeException("Erro léxico:';' não é um token válido");
             default: return "ID";
         }
     }

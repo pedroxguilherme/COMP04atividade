@@ -70,27 +70,22 @@ public class AnalisadorSintatico {
         esperar("TIPO");
         esperar(":");
         esperar("ID");
-        esperar(";");
+       
     }
 
     private void atribuicao() {
         esperar("ID");
         esperar("ATR");
         expressao();
-        esperar(";");
+       
     }
-    private void atribuicaoInline() {
-        esperar("ID");
-        esperar("ATR");
-        expressao();
-    }
-
+   
     private void comandoLeitura() {
         esperar("LEIA");
         esperar("PARAB");
         esperar("ID");
         esperar("PARFE");
-        esperar(";");
+       
     }
 
     private void comandoEscrita() {
@@ -104,7 +99,7 @@ public class AnalisadorSintatico {
             erro("Esperado ID, NUMINT ou STRING em escreva()");
         }
         esperar("PARFE");
-        esperar(";");
+      
     }
 
 
@@ -121,7 +116,7 @@ public class AnalisadorSintatico {
 
     private void comandoPara() {
         esperar("PARA");
-        atribuicaoInline();
+        atribuicao();
         esperar("ATE");
         esperar("NUMINT");
         if (aceitar("PASSO")) {

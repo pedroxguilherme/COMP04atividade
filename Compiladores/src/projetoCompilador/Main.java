@@ -12,22 +12,22 @@ public class Main {
 
         try (PrintWriter writer = new PrintWriter("saida.TEM")) {
             for (Token token : tokens) {
-                writer.println(token.tipo);
+                writer.println(token.tipo +" "+ token.posicao);
             }
         }
-        
-        System.out.println(tokens);
+        System.out.println("Análise léxica concluída com sucesso.");
+     
 
-        System.out.println("Tokens reconhecidos:");
-        for (Token t : tokens) {
-            System.out.println(t.lexema + t.tipo);
-        }
+
         
         
         AnalisadorSintatico sintatico = new AnalisadorSintatico(tokens);
         try {
             sintatico.analisar();
             System.out.println("Análise sintática concluída com sucesso.");
+            AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
+            semantico.analisar();
+            System.out.println("Análise semântica concluída com sucesso.");
         } catch (RuntimeException e) {
             System.err.println(e.getMessage());
         }

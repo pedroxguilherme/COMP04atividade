@@ -19,12 +19,7 @@ public class AnalisadorSemantico {
         }
     }
 
-    private Token lookahead(int offset) {
-        if (pos + offset - 1 < tokens.size()) {
-            return tokens.get(pos + offset - 1);
-        }
-        return new Token("EOF", "EOF", -1);
-    }
+
 
     private void erro(String mensagem) {
         throw new RuntimeException("Erro semântico na posição " + atual.posicao + ": " + mensagem);
